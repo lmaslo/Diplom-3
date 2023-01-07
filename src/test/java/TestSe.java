@@ -10,6 +10,9 @@ public class TestSe {
         // Открой браузер Chrome
         // Перейди на страницу тестового стенда
         // Закрой браузер
-        open("https://qa-mesto.praktikum-services.ru/");
+        open("https://stellarburgers.nomoreparties.site/register");
+
+        /*Успешную регистрацию.
+Ошибку для некорректного пароля. Минимальный пароль — шесть символов.*/
     }
 }
