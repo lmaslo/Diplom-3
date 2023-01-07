@@ -1,7 +1,9 @@
 package model;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -10,8 +12,10 @@ public class RegisterPage {
     //locators
     private SelenideElement inputName = $x("//fieldset[1]//input");
     private SelenideElement inputEmail = $x("//fieldset[2]//input");
-    private SelenideElement inputPassword = $("[type=password]");
+    private SelenideElement inputPassword = $x("//fieldset[3]//input");
     private SelenideElement buttonRegister = $x(".//button[text()='Зарегистрироваться']");
+
+    private SelenideElement errorPasswordText = $x("//fieldset[3]//p");
 
 
     //actions
@@ -47,6 +51,20 @@ public class RegisterPage {
     public RegisterPage inputPassword(String password) {
         step("Заполнить поле Пароль", () -> {
             inputPassword.setValue(password);
+        });
+        return this;
+    }
+
+    public RegisterPage checkTextError(String error) {
+        step("Проверка текста ошибки под полем пароль", () -> {
+            errorPasswordText.shouldHave(text(error));
+        });
+        return this;
+    }
+
+    public RegisterPage checkPage() {
+        step("Проверка, что после ошибки не произошла переадресация на другую страницу и кнопка регистрации активна", () -> {
+            buttonRegister.should(Condition.visible);
         });
         return this;
     }

@@ -26,6 +26,21 @@ public class RegisterTests {
 
     //тест для некорректных паролей
 /*Ошибку для некорректного пароля. Минимальный пароль — шесть символов.*/
+    //добавить текст ошибки в константу
+    //добавить генерацию тестовых данных
+
+    @Test
+    public void checkRegisterShortPassword() {
+        registerPage.openPage()
+                .inputName(name)
+                .inputEmail("lena@yan.ru")
+                .inputPassword("12345")
+                .buttonRegisterClick();
+
+        registerPage.checkTextError("Некорректный пароль")
+                .checkPage();
+
+    }
 
 
 }
