@@ -3,14 +3,21 @@ package model;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class MainPage {
+
+
+
     //locators
     private SelenideElement buttonAuthInAccount = $x(".//button[text()='Войти в аккаунт']");
     private SelenideElement buttonPersonalAccount = $x(".//p[text()='Личный Кабинет']");
-    private SelenideElement headingForm = $x(".//h2[text()='Вход']");
+    private SelenideElement labelConstructor = $(byText("Конструктор"));
+    private SelenideElement headCollectToBurger = $(byText("Соберите бургер"));
+    private SelenideElement logoStellarBurgers = $(".AppHeader_header__logo__2D0X2");
+
 
     private SelenideElement labelBread = $x(".//span[text()='Булки']");
     private SelenideElement labelSouse = $x(".//span[text()='Соусы']");
@@ -41,10 +48,27 @@ public class MainPage {
         return this;
     }
 
+    public MainPage logoStellarBurgersClick() {
+        step("Нажать на кнопку Конструктор", () -> {
+            logoStellarBurgers.click();
+        });
+        return this;
+    }
+
+    public MainPage labelConstructorClick() {
+        step("Нажать на логотип stellar burger", () -> {
+            labelConstructor.click();
+        });
+        return this;
+    }
+
+
     public MainPage checkUserLogOut() {
         step("Проврека, чо после перехода по лейбу Личный кабинет на старинице есть текст Вход", () -> {
+            AuthPage authPage = new AuthPage();
+
             buttonPersonalAccountClick();
-            headingForm.shouldHave(text("Вход"));
+            authPage.shouldBeTextLogin();
         });
         return this;
     }
@@ -72,8 +96,15 @@ public class MainPage {
     }
 
     public MainPage checkBlockIngredients(String nameIngredient) {
-        step("Нажать на Булки", () -> {
+        step("Проверка текста на странице", () -> {
             blockIngredients.shouldHave(text(nameIngredient));
+        });
+        return this;
+    }
+
+    public MainPage checkTextCollectToBurger() {
+        step("Проверка текста на странице Собери бургер", () -> {
+            headCollectToBurger.shouldHave(text("Соберите бургер"));
         });
         return this;
     }

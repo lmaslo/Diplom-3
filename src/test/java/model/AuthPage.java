@@ -2,7 +2,7 @@ package model;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -15,6 +15,7 @@ public class AuthPage {
     private SelenideElement inputEmail = $x("//input[@name='name']");
     private SelenideElement inputPassword = $x("//input[@name='Пароль']");
     private SelenideElement buttonAuth = $x(".//button[text()='Войти']");
+    private SelenideElement headingForm = $x(".//h2[text()='Вход']");
 
 
     //actions
@@ -71,6 +72,15 @@ public class AuthPage {
         });
         return this;
     }
+
+    public AuthPage shouldBeTextLogin() {
+        step("Проврека, что на старинице есть текст Вход", () -> {
+            headingForm.shouldHave(text("Вход"));
+        });
+        return this;
+    }
+
+
 
 
 }
