@@ -1,45 +1,55 @@
 package test;
 
+import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
+import model.AuthPage;
 import model.RegisterPage;
+import org.junit.After;
 import org.junit.Test;
+import utils.RandomString;
 
 public class RegisterTests {
-    RegisterPage registerPage=new RegisterPage();
 
-    String name ="Lena";
-    //добавить описние для отчетов алюра
-    //добавить генерацию тестовый данных
-    //удалять новый аккаунт
+    private static final String EXPECTED_MESSAGE_INCORRECT_PASSWORD = "Некорректный пароль";
 
-    @Test
-    public void checkRegister() {
-        registerPage.openPage()
-                .inputName(name)
-                .inputEmail("lena@yan.ru")
-                .inputPassword("password")
-                .buttonRegisterClick();
+    RegisterPage registerPage = new RegisterPage();
+    AuthPage authPage = new AuthPage();
+    RandomString generate = new RandomString();
 
-        //авторизация
-        //проверка заголовка Личный кабинет
-        //удаление пользователя
+    String name = generate.getRandomString(5);
+    String email = generate.getRandomEmail();
+    String password = generate.getRandomString(6);
+
+    String shortPassword = generate.getRandomString(5);
+
+    @After
+    public void clearBrowser() {
+        Selenide.clearBrowserLocalStorage();
     }
 
-    //тест для некорректных паролей
-/*Ошибку для некорректного пароля. Минимальный пароль — шесть символов.*/
-    //добавить текст ошибки в константу
-    //добавить генерацию тестовых данных
+    @Test
+    @DisplayName("Регистрация позитивный тест")
+    @Description("Регистрация, проверка что после регистрации пользователь успешно авторизовывается")
+    public void checkRegister() {
+        registerPage.openPage();
+        registerPage.register(name, email, password);
+        authPage.openPage()
+                .auth(email, password)
+                .checkAuthSuccess(name, email, password);
+
+        authPage.logOut();
+    }
 
     @Test
+    @DisplayName("Регистрация с некорректным паролем")
+    @Description("Регистрация с некорректным паролем (меньше минимально длинны). Проверка, что возвращается ошибка и пользователь остается на странице регистрации")
     public void checkRegisterShortPassword() {
-        registerPage.openPage()
-                .inputName(name)
-                .inputEmail("lena@yan.ru")
-                .inputPassword("12345")
-                .buttonRegisterClick();
+        registerPage.openPage();
+        registerPage.register(name, email, shortPassword);
 
-        registerPage.checkTextError("Некорректный пароль")
+        registerPage.checkTextError(EXPECTED_MESSAGE_INCORRECT_PASSWORD)
                 .checkPage();
-
     }
 
 

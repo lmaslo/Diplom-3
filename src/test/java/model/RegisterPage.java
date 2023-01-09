@@ -14,6 +14,7 @@ public class RegisterPage {
     private SelenideElement inputEmail = $x("//fieldset[2]//input");
     private SelenideElement inputPassword = $x("//fieldset[3]//input");
     private SelenideElement buttonRegister = $x(".//button[text()='Зарегистрироваться']");
+    private SelenideElement buttonAuth = $x(".//a[text()='Войти']");
 
     private SelenideElement errorPasswordText = $x("//fieldset[3]//p");
 
@@ -30,6 +31,13 @@ public class RegisterPage {
     public RegisterPage buttonRegisterClick() {
         step("Нажать на кнопку регистрация", () -> {
             buttonRegister.click();
+        });
+        return this;
+    }
+
+    public RegisterPage buttonAuthClick() {
+        step("Нажать на кнопку войти", () -> {
+            buttonAuth.click();
         });
         return this;
     }
@@ -69,6 +77,16 @@ public class RegisterPage {
         return this;
     }
 
+
+    public RegisterPage register(String name, String email, String password) {
+        step("Ввод имени, пароля, email и нажать на кнопку Регистрация", () -> {
+            inputName(name);
+            inputEmail(email);
+            inputPassword(password);
+            buttonRegisterClick();
+        });
+        return this;
+    }
 
 
 }
