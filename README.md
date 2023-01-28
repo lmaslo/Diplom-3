@@ -38,3 +38,10 @@
 <img width="6%" title="JUnit4" src="image/logo/junit.png">
 <img width="6%" title="GitHub" src="image/logo/GitHub.svg">
 </p>
+
+
+## :electron: Запуск тестов из терминала
+
+```
+mvn clean test
+```
