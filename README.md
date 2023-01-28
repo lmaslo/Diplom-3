@@ -28,4 +28,14 @@
 #### Выход из аккаунта
 - ✓ Проверь выход по кнопке «Выйти» в личном кабинете.
 
+## :classical_building: Технологии
 
+<p align="center">
+<img width="6%" title="Idea" src="images/logo/Idea.svg">
+<img width="6%" title="Java" src="images/logo/Java.svg">
+<img width="6%" title="Selenide" src="images/logo/Selenide.svg">
+<img width="6%" title="Allure Report" src="images/logo/Allure.svg">
+<img width="6%" title="Maven" src="images/logo/">
+<img width="6%" title="JUnit4" src="images/logo/">
+<img width="6%" title="GitHub" src="images/logo/GitHub.svg">
+</p>
