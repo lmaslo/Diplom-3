@@ -30,7 +30,7 @@
 
 ## :classical_building: Технологии
 <p align="center">
-<img width="6%" title="Idea" src="/image/logo/Allure.svg">
+<img width="6%" title="Idea" src="/image/logo/Idea.svg">
 <img width="6%" title="Java" src="image/logo/Java.svg">
 <img width="6%" title="Selenide" src="image/logo/Selenide.svg">
 <img width="6%" title="Allure Report" src="image/logo/Allure.svg">
