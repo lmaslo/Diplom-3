@@ -29,6 +29,10 @@
 - ✓ Проверь выход по кнопке «Выйти» в личном кабинете.
 
 ## :classical_building: Технологии
+<p align="center">
+<img width="6%" title="Idea" src="images/logo/Idea.svg">
+  </p>
+
 
 <p align="center">
 <img width="6%" title="Idea" src="images/logo/Idea.svg">
