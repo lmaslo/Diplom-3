@@ -47,4 +47,5 @@ mvn clean test
 ```
 
 ## :bar_chart: Allure-отчет
-<img width="60%" title="Allure" src="image/logo/allure/allure1.PNG">
+<img width="45%" title="Allure" src="image/logo/allure/allure1.PNG">
+<img width="45%" title="Allure" src="image/logo/allure/allure2.PNG">
