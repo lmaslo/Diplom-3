@@ -1,4 +1,4 @@
-# Дипломный проект по автоматизации тестирования для Stellarburgers. 
+# Дипломный проект по автоматизации тестирования UI для Stellarburgers. 
 <a target="_blank" href="https://stellarburgers.nomoreparties.site/">Веб сайт Stellarburgers</a>
 
 
